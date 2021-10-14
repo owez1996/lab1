@@ -5,8 +5,9 @@ class Form extends Component {
         super(props);
         
         this.initialState = {
-            name: '',
-            job: ''
+            firstname:'',
+            lastname: '',
+            email: ''
         };
 
         this.state = this.initialState;
