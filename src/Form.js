@@ -7,20 +7,27 @@ class Form extends Component {
         this.initialState = {
             firstname:'',
             lastname: '',
-            email: ''
+            email: '',
+            id: 0
         };
 
         this.state = this.initialState;
     }
 
     handleChange = event => {
-        const { name, value } = event.target;
+        const { name, value ,id} = event.target;
 
         this.setState({
-            [name] : value
+            [name] : value,
+            [id]: value
         });
     }
 
+          OnClikUp = () =>{
+            this.setState(prevState => ({
+              id: prevState.id+1
+            }));
+        }
     onFormSubmit = (event) => {
         event.preventDefault();
         
@@ -29,28 +36,37 @@ class Form extends Component {
     }
 
     render() {
-        const { name, job } = this.state; 
+        const { name, lastname,email } = this.state; 
 
         return (
-            <form onSubmit={this.onFormSubmit}>
-                <label for="name">Name</label>
-                <input 
-                    type="text" 
-                    name="name" 
-                    id="name"
-                    value={name} 
-                    onChange={this.handleChange} />
-                <label for="job">Job</label>
-                <input 
-                    type="text" 
-                    name="job" 
-                    id="job"
-                    value={job} 
-                    onChange={this.handleChange} />
-                <button type="submit">
-                    Submit
-                </button>
-            </form>
+            <from onSumbit={this.onForSumbit}>
+                <button type="sumbit"
+                onClick ={this.onClickUp}
+                >
+                    Add User
+                    </button>
+                    <label for= "firstname">firstname</label>
+                    <input
+                    type="text"
+                    name="firstname"
+                    id="firstname"
+                    value={firstname}
+                    onChange={this.handleChange}/>
+                    <label for = "lastname">Lastname</label>
+                    <input
+                     type="text"
+                     name="lastname"
+                     id="lastname"
+                     value={lastname}
+                     onChange={this.handleChange}/>
+                     <label for = "email">Email</label>
+                     <input
+                     type="text"
+                     name="email"
+                     id="email"
+                     value={email}
+                     onChange={this.handlechange} />
+            </from>
         );
     }
 }
